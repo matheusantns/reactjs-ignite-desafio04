@@ -1,22 +1,23 @@
-import { Component } from 'react';
 import { FiPlusSquare } from 'react-icons/fi';
 
 import { Container } from './styles';
 import Logo from '../../assets/logo.svg';
 
-class Header extends Component {
-  render() {
-    const { openModal } = this.props;
+interface toggleModal {
+  openModal: () => void;
+}
 
-    return (
-      <Container>
+export default function Header(props:toggleModal) {
+
+  return (
+    <Container>
         <header>
           <img src={Logo} alt="GoRestaurant" />
           <nav>
             <div>
               <button
                 type="button"
-                onClick={openModal}
+                onClick={props.openModal}
               >
                 <div className="text">Novo Prato</div>
                 <div className="icon">
@@ -27,8 +28,5 @@ class Header extends Component {
           </nav>
         </header>
       </Container>
-    )
-  }
-};
-
-export default Header;
+  )
+}
